@@ -1,0 +1,24 @@
+{
+  "name": "political-scorecard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zsloss/political-scorecard.git"
+  },
+  "author": "Zachary Sloss",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zsloss/political-scorecard/issues"
+  },
+  "homepage": "https://github.com/zsloss/political-scorecard#readme",
+  "dependencies": {
+    "express": "latest",
+    "body-parser": "latest",
+    "mongoose": "latest"
+  }
+}
