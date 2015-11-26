@@ -20,5 +20,11 @@
     "express": "latest",
     "body-parser": "latest",
     "mongoose": "latest"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-stylus": "^2.1.0",
+    "gulp-uglify": "^1.5.1"
   }
 }

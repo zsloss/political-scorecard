@@ -21,14 +21,20 @@ var Entity = mongoose.model('Entity', entitySchema);
 
 app.use(express.static(path.join(__dirname, 'site')));
 
-app.get('/entities', function(req, res) {
+app.get('/api/entities', function(req, res) {
     Entity.find(function (err, entities) {
         if (err) res.send(err);
         res.json(entities);
     });
 });
 
-app.post('/entities', function(req, res) {
+app.get('/api/entities/:id', function(req, res) {
+    Entity.findById(req.params.id, function (err, entity) {
+        if (err) res.send(err);
+        res.json(entity);
+    });
+});
+app.post('/api/entities', function(req, res) {
     var entity = new Entity();
     entity.name = req.body.name;
     entity.colour = req.body.colour;
@@ -40,12 +46,12 @@ app.post('/entities', function(req, res) {
     });
 });
 
-app.put('/entities/:id', function(req, res) {
+app.put('/api/entities/:id', function(req, res) {
     var entity = Entity.findById(req.params.id, function(err, entity) {
         if (err) res.send(err);
         entity.name = req.body.name;
         entity.colour = req.body.colour;
-        entity.votes = [];
+        entity.votes = req.body.votes;
         
         entity.save(function (err) {
             if (err) res.send(err);
