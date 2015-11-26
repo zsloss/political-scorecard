@@ -1,11 +1,15 @@
 <!doctype html>
 <html>
 <head>
-<title>Political Scorecard</title>
-<link rel="stylesheet" src="css/style.css">
+<title>The Political Scorecard</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-Static Page
+<h1>The Political Scorecard.</h1>
+<div id="election-container"></div>
+<script type="text/template" id="entity-template">
+<h3 style="color: <%= colour %>"><%= name %></h3>
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
