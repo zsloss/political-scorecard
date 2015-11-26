@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var path = require('path');
 
 var app = express();
 app.use(bodyParser.json());
@@ -18,9 +19,7 @@ var entitySchema = mongoose.Schema({
 
 var Entity = mongoose.model('Entity', entitySchema);
 
-app.get('/', function(req, res) {
-    res.send("Welcome to the Political Scorecard app!");
-});
+app.use(express.static(path.join(__dirname, 'site')));
 
 app.get('/entities', function(req, res) {
     Entity.find(function (err, entities) {
@@ -38,6 +37,20 @@ app.post('/entities', function(req, res) {
     entity.save(function (err) {
         if (err) res.send(err);
         res.json(entity);
+    });
+});
+
+app.put('/entities/:id', function(req, res) {
+    var entity = Entity.findById(req.params.id, function(err, entity) {
+        if (err) res.send(err);
+        entity.name = req.body.name;
+        entity.colour = req.body.colour;
+        entity.votes = [];
+        
+        entity.save(function (err) {
+            if (err) res.send(err);
+            res.json(entity);
+        });
     });
 });
 
