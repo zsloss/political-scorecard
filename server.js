@@ -10,7 +10,8 @@ mongoose.connect('mongodb://localhost/political-scorecard');
 
 var entitySchema = mongoose.Schema({
     name: String,
-    colour: String,
+    bg_colour: String,
+    fg_colour: String,
     votes: [{
         score: Number,
         description: String
@@ -37,7 +38,8 @@ app.get('/api/entities/:id', function(req, res) {
 app.post('/api/entities', function(req, res) {
     var entity = new Entity();
     entity.name = req.body.name;
-    entity.colour = req.body.colour;
+    entity.bg_colour = req.body.bg_colour;
+    entity.fg_colour = req.body.fg_colour;
     entity.votes = [];
 
     entity.save(function (err) {
@@ -47,15 +49,26 @@ app.post('/api/entities', function(req, res) {
 });
 
 app.put('/api/entities/:id', function(req, res) {
-    var entity = Entity.findById(req.params.id, function(err, entity) {
+    Entity.findById(req.params.id, function(err, entity) {
         if (err) res.send(err);
         entity.name = req.body.name;
-        entity.colour = req.body.colour;
+        entity.bg_colour = req.body.bg_colour;
+        entity.fg_colour = req.body.fg_colour;
         entity.votes = req.body.votes;
-        
+
         entity.save(function (err) {
             if (err) res.send(err);
             res.json(entity);
+        });
+    });
+});
+
+app.delete('/api/entities/:id', function(req, res) {
+    Entity.findById(req.params.id, function(err, entity) {
+        if (err) res.send(err);
+        entity.remove(function(err) {
+            if (err) res.send(err);
+            res.send(entity);
         });
     });
 });
