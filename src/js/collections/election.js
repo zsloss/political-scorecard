@@ -1,6 +1,6 @@
-var app = app || {};
+var Entity = require('../models/entity.js');
 
-app.Election = Backbone.Collection.extend({
-    model: app.Entity,
+module.exports = Backbone.Collection.extend({
+    model: Entity,
     url: '/api/entities'
 });

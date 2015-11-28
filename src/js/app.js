@@ -1,4 +1,5 @@
-var app = app || {};
+var ElectionView = require('./views/election.js');
+
 $(function() {
-new app.ElectionView();
+    new ElectionView();
 });

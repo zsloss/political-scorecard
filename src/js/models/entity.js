@@ -1,6 +1,4 @@
-var app = app || {};
-
-app.Entity = Backbone.Model.extend({
+module.exports = Backbone.Model.extend({
     defaults: {
         name: "Unnamed",
         colour: "white",

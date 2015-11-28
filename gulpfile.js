@@ -1,16 +1,18 @@
 var gulp = require('gulp');
 var stylus = require('gulp-stylus');
-var concat = require('gulp-concat');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 
 gulp.task('copy', function() {
     gulp.src('src/index.html')
-    .pipe(gulp.dest('site/'));
+    .pipe(gulp.dest('site'));
 });
 
 gulp.task('js', function() {
-    gulp.src(['src/js/models/*.js', 'src/js/collections/*.js', 'src/js/views/*.js', 'src/js/*.js'])
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('site/js'));
+    browserify('src/js/app.js')
+    .bundle()
+    .pipe(source('app.js'))
+    .pipe(gulp.dest('site/js'))
 });
 
 gulp.task('stylus', function() {

@@ -22,8 +22,9 @@
     "mongoose": "latest"
   },
   "devDependencies": {
+    "browserify": "^12.0.1",
     "gulp": "^3.9.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-stylus": "^2.1.0"
+    "gulp-stylus": "^2.1.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }

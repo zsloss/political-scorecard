@@ -1,6 +1,4 @@
-var app = app || {};
-
-app.EntityView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
     className: 'entity-container',
     template: _.template($('#entity-template').html()),
 

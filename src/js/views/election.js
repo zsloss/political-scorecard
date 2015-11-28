@@ -1,10 +1,11 @@
-var app = app || {};
+var EntityView = require('./entity.js');
+var Election = require('../collections/election.js');
 
-app.ElectionView = Backbone.View.extend({
+module.exports = Backbone.View.extend({
     el: '#election-container',
 
     initialize: function() {
-        this.collection = new app.Election();
+        this.collection = new Election();
         this.collection.fetch({reset: true});
         this.render();
 
@@ -19,7 +20,7 @@ app.ElectionView = Backbone.View.extend({
     },
 
     renderEntity: function(entity) {
-        var entityView = new app.EntityView({
+        var entityView = new EntityView({
             model: entity
         });
         this.$el.append(entityView.render().el);  
